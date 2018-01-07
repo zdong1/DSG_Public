@@ -9,22 +9,21 @@ import seaborn as sns
 import numpy as np
 # Set up the Dataset
 color = sns.color_palette() # Set a bit more colors
-train_df = pd.read_csv("training_CONFIDENTIAL.csv", parse_dates=["TransDate"])
-test_df = pd.read_csv("test_CONFIDENTIAL.csv", parse_dates=["TransDate"])
-# train_df = pd.get_dummies(train_df, prefix=['County']) This does not help: we did not find
-# independent non-described county effect.
+train_df = pd.read_csv("file.csv", parse_dates=["var"])
+test_df = pd.read_csv("file.csv", parse_dates=["var"])
+# Deal with long/lat data
 train_df['Latitude'] = train_df.Latitude/1e6
 train_df['Longitude'] = train_df.Longitude/1e6
 train_df_new = train_df.fillna(0, inplace=True)
-train_df[['BGMedIncome','LotSizeSquareFeet']]=train_df[['BGMedIncome','LotSizeSquareFeet']].astype(float)
+train_df[['v1','v2']]=train_df[['v1a','v2a']].astype(float)
 x_train = train_df.iloc[:, np.r_[6:11, 12, 14:16, 21]].values
-y_train = train_df['SaleDollarCnt'].values
+y_train = train_df['dv'].values
 test_df['Latitude'] = test_df.Latitude/1e6
 test_df['Longitude'] = test_df.Longitude/1e6
 test_df_new = test_df.fillna(0, inplace=True)
-test_df[['BGMedIncome','LotSizeSquareFeet']]=test_df[['BGMedIncome','LotSizeSquareFeet']].astype(float)
+test_df[['v1', 'v2']]=test_df[['v1a','v2a']].astype(float)
 x_test = test_df.iloc[:, np.r_[6:11, 12, 14:16, 21]].values
-y_test = test_df['SaleDollarCnt'].values
+y_test = test_df['dv'].values
 
 
 
