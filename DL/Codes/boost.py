@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-XG Boost Simple Starter
+A XGB Booster Simple Starter
 Jason (Zhihang) Dong
 """
 
