@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-One Concern Data Science Challenge
+This is initially a starter I wrote for a data science challenge,
+for confidentiality reasons, key fields have been removed.
 Neural Network Implementation with Softmax+ReLu via Keras, SGD Optimizer
 Jason (Zhihang) Dong
 """
 import pandas as pd
-train_df = pd.read_csv("train.csv")
+train_df = pd.read_csv("your_train.csv")
 train_df.set_value(train_df['label'] == 1, ['label'],0)
 train_df.set_value(train_df['label'] == 2, ['label'],1)
 train_df.set_value(train_df['label'] == 3, ['label'],2)
