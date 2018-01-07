@@ -1,3 +1,4 @@
+# A Simple Vernhoff Algorithm
 import os
 cwd = os.getcwd() #make sure your file is in that working directory
 import numpy as np
