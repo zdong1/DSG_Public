@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-One Concern Data Science Challenge
+Compare Many Classifiers
+In this data set, the classifying label is at column [-1], adjust it for your case.
 Algorithm Comparisons
 Jason (Zhihang) Dong
 """
