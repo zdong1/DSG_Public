@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-One Concern Data Science Challenge
+A Simple Torch Starter
+Note: For confidentiality reasons, key fields have been removed. This originates from my response to a DS
+Challenge, where the key classified label is at column [-1]. Adjust it for your case.
 Multilayer perceptron model, 5 hidden layers; ReLu+ SGD Optimizer, CCE Loss Functions
 Jason (Zhihang) Dong
 input layer : 16 neuron, represents the feature of x, y and z
@@ -21,7 +23,7 @@ torch.manual_seed(10086)
 
 
 
-train_df = pd.read_csv("train.csv")
+train_df = pd.read_csv("your_train.csv")
 train_df.set_value(train_df['label'] == 1, ['label'],0)
 train_df.set_value(train_df['label'] == 2, ['label'],1)
 train_df.set_value(train_df['label'] == 3, ['label'],2)
