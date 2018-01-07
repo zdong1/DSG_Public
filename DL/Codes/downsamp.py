@@ -1,11 +1,12 @@
 #!/usr/bin/python
 
 """
-XGBoost: Tree-Based Model
-Cost-Sensitive Softmax Multi-Class Classification Model using Downsampling
+A Cost-Sensitive Softmax Multi-Class Classification Model using Downsampling
 Max Depth = 6
 learning rate = 0.01
 epoch = 500
+Note: for confidentiality reasons, key variables have been removed. In this example,
+classified labels are in column [-1]
 """
 
 
@@ -18,7 +19,7 @@ import itertools
 import matplotlib as plt
 
 
-train_df = pd.read_csv("train.csv")
+train_df = pd.read_csv("your_train.csv")
 X = train_df.ix[:, train_df.columns != 'label']
 y = train_df.ix[:, train_df.columns == 'label']
 
@@ -82,8 +83,6 @@ print('Test error using softmax = {}'.format(error_rate))
 # do the same thing again, but output probabilities
 param['objective'] = 'multi:softprob'
 bst = xgb.train(param, xg_train, num_round, watchlist)
-# Note: this convention has been changed since xgboost-unity
-# get prediction, this is in 1D array, need reshape to (ndata, nclass)
 pred_prob = bst.predict(xg_test).reshape(y_test.shape[0], 4)
 pred_label = np.argmax(pred_prob, axis=1)
 error_rate = np.sum(pred_label != y_test) / y_test.shape[0]
@@ -98,7 +97,7 @@ param['silent'] = 1
 param['nthread'] = 4
 param['num_class'] = 4
 
-test_df = pd.read_csv("test.csv")
+test_df = pd.read_csv("your_test.csv")
 ts_x = test_df.values
 xg_ts = xgb.DMatrix(ts_x)
 watchlist = [(xg_train, 'train'), (xg_test, 'test')]
