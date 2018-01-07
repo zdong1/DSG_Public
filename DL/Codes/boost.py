@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Zillow Data Scientist Challenge
-XG Boost Simple
+XG Boost Simple Starter
 Jason (Zhihang) Dong
 """
 
